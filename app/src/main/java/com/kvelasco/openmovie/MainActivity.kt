@@ -12,13 +12,13 @@ class MainActivity : AppCompatActivity() {
         val tag = "page:${item.itemId}"
         val manager = supportFragmentManager
         val fragment: Fragment = manager.findFragmentByTag(tag) ?: when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.navigation_movies -> {
                 TrendingMoviesFragment.newInstance()
             }
-            R.id.navigation_dashboard -> {
+            R.id.navigation_shows -> {
                 TrendingMoviesFragment.newInstance()
             }
-            R.id.navigation_notifications -> {
+            R.id.navigation_people -> {
                 TrendingMoviesFragment.newInstance()
             }
             else -> {
@@ -49,6 +49,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        navView.selectedItemId = R.id.navigation_home
+        navView.selectedItemId = R.id.navigation_movies
     }
 }

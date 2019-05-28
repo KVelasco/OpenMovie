@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">OpenMovie</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_movies">Movies</string>
+    <string name="title_shows">Shows</string>
+    <string name="title_people">People</string>
 </resources>
