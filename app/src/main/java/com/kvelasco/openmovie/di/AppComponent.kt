@@ -1,7 +1,8 @@
 package com.kvelasco.openmovie.di
 
 import android.content.Context
-import com.kvelasco.openmovie.trending.TrendingViewModel
+import com.kvelasco.openmovie.trending.movies.TrendingMoviesViewModel
+import com.kvelasco.openmovie.trending.shows.TrendingShowsViewModel
 import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.BindsInstance
 import dagger.Component
@@ -24,7 +25,8 @@ interface AppComponent {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
 
-    val trendingViewModel: TrendingViewModel
+    val trendingMoviesViewModel: TrendingMoviesViewModel
+    val trendingShowsViewModel: TrendingShowsViewModel
 }
 
 @AssistedModule

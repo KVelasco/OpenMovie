@@ -1,17 +1,16 @@
-package com.kvelasco.domain.trending
+package com.kvelasco.domain.trending.shows
 
-data class TrendingMovieDomain(
+data class TrendingShowDomain(
     val id: Int,
-    val adult: Boolean,
     val backdropPath: String?,
+    val firstAirDate: String,
     val genreIds: List<Int>,
+    val name: String,
+    val originCountry: List<String>,
     val originalLanguage: String,
-    val originalTitle: String,
+    val originalName: String,
     val overview: String,
     val posterPath: String?,
-    val releaseDate: String?,
-    val title: String,
-    val video: Boolean,
     val voteAverage: Float,
     val voteCount: Int,
     val popularity: Float

@@ -1,4 +1,4 @@
-package com.kvelasco.domain.trending
+package com.kvelasco.domain.trending.movies
 
 import com.google.gson.annotations.SerializedName
 
@@ -20,7 +20,7 @@ data class TrendingMovie(
 )
 
 fun TrendingMovie.toTrendingEntity(): TrendingMovieEntity {
-    return TrendingMovieEntity (
+    return TrendingMovieEntity(
         id = id,
         adult = adult,
         backdropPath = backdropPath,
@@ -39,7 +39,7 @@ fun TrendingMovie.toTrendingEntity(): TrendingMovieEntity {
 }
 
 fun TrendingMovie.toTrendingDomain(): TrendingMovieDomain {
-    return TrendingMovieDomain (
+    return TrendingMovieDomain(
         id = id,
         adult = adult,
         backdropPath = backdropPath,

@@ -1,4 +1,4 @@
-package com.kvelasco.openmovie.trending
+package com.kvelasco.openmovie.trending.shows
 
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -7,21 +7,23 @@ import com.kvelasco.core.api.Status
 import com.kvelasco.domain.trending.TrendingUseCases
 import com.kvelasco.openmovie.common.BaseViewModel
 import com.kvelasco.openmovie.common.UiState
+import com.kvelasco.openmovie.trending.TrendingUiModel
+import com.kvelasco.openmovie.trending.toUiModel
 import javax.inject.Inject
 
-class TrendingViewModel @Inject constructor(private val trendingUseCases: TrendingUseCases): BaseViewModel() {
+class TrendingShowsViewModel @Inject constructor(private val trendingUseCases: TrendingUseCases): BaseViewModel() {
 
     private val _uiState = MutableLiveData<UiState<List<TrendingUiModel>>>()
     val uiState: LiveData<UiState<List<TrendingUiModel>>>
         get() = _uiState
 
     init {
-       getTrendingMovies()
+        getTrendingShows()
     }
 
-    fun getTrendingMovies() {
+    fun getTrendingShows() {
         disposables.add(
-            trendingUseCases.getTrendingMovies()
+            trendingUseCases.getTrendingShows()
                 .subscribe({
                     when (it.status) {
                         Status.LOADING -> {
@@ -47,7 +49,11 @@ class TrendingViewModel @Inject constructor(private val trendingUseCases: Trendi
                         }
                     }
                 }, {
-
+                    _uiState.value = UiState(
+                        View.GONE,
+                        it,
+                        null
+                    )
                 })
         )
     }

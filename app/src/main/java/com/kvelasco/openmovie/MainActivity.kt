@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.kvelasco.openmovie.trending.TrendingMoviesFragment
+import com.kvelasco.openmovie.trending.movies.TrendingMoviesFragment
+import com.kvelasco.openmovie.trending.shows.TrendingShowsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,10 +17,10 @@ class MainActivity : AppCompatActivity() {
                 TrendingMoviesFragment.newInstance()
             }
             R.id.navigation_shows -> {
-                TrendingMoviesFragment.newInstance()
+                TrendingShowsFragment.newInstance()
             }
             R.id.navigation_people -> {
-                TrendingMoviesFragment.newInstance()
+               Fragment()
             }
             else -> {
                 throw IllegalArgumentException("Unknown itemId: ${item.itemId}")
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             if (fragment.isDetached){
                 tx.attach(fragment)
             } else {
-                tx.replace(R.id.content, fragment!!, tag)
+                tx.replace(R.id.content, fragment, tag)
             }
             tx.commitAllowingStateLoss()
             return@OnNavigationItemSelectedListener true

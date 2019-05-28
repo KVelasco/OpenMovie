@@ -1,4 +1,4 @@
-package com.kvelasco.domain.trending
+package com.kvelasco.domain.trending.movies
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -22,7 +22,7 @@ data class TrendingMovieEntity(
 )
 
 fun TrendingMovieEntity.toTrendingMovie(): TrendingMovie {
-    return TrendingMovie (
+    return TrendingMovie(
         id = id,
         adult = adult,
         backdropPath = backdropPath,

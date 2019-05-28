@@ -24,6 +24,7 @@ class TrendingRecyclerAdapter:  RecyclerView.Adapter<TrendingRecyclerAdapter.Vie
     }
 
     fun addTrending(list: List<TrendingUiModel>) {
+        this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()
     }

@@ -1,4 +1,4 @@
-package com.kvelasco.openmovie.trending
+package com.kvelasco.openmovie.trending.shows
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kvelasco.openmovie.R
 import com.kvelasco.openmovie.di.injector
 import com.kvelasco.openmovie.di.viewModel
+import com.kvelasco.openmovie.trending.TrendingRecyclerAdapter
 
-class TrendingMoviesFragment: Fragment() {
+class TrendingShowsFragment: Fragment() {
 
-    private val viewModel: TrendingViewModel by viewModel {
-        requireActivity().injector.trendingViewModel
+    private val viewModel: TrendingShowsViewModel by viewModel {
+        requireActivity().injector.trendingShowsViewModel
     }
 
     private lateinit var recyclerView: RecyclerView
@@ -23,7 +24,7 @@ class TrendingMoviesFragment: Fragment() {
     private val adapter: TrendingRecyclerAdapter = TrendingRecyclerAdapter()
 
     companion object {
-        fun newInstance(): TrendingMoviesFragment = TrendingMoviesFragment()
+        fun newInstance(): TrendingShowsFragment = TrendingShowsFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
