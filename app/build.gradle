@@ -1,8 +1,9 @@
+import buildsrc.dependencies.Libs
+
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -13,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'SERVER_ENDPOINT', '"https://api.themoviedb.org/3/"'
+
     }
     buildTypes {
         release {
@@ -20,16 +23,54 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation project(":core")
+    implementation project(":domain")
+    implementation project(":retrofit")
+    implementation project(":room")
+
+    implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.constraintlayout
+    implementation Libs.AndroidX.ktxCore
+    implementation Libs.AndroidX.ktxActivity
+    implementation Libs.AndroidX.ktxFragment
+    implementation Libs.AndroidX.Lifecycle.extensions
+    implementation Libs.Google.material
+
+    implementation Libs.Google.Dagger.base
+    implementation Libs.Google.Dagger.androidSupport
+    kapt Libs.Google.Dagger.compiler
+    kapt Libs.Google.Dagger.processor
+
+    implementation Libs.AndroidX.Room.runtime
+    kapt Libs.AndroidX.Room.compiler
+    implementation Libs.AndroidX.Room.rxjava2
+
+    implementation Libs.Retrofit.base
+    implementation Libs.Retrofit.gsonConverter
+    implementation Libs.Retrofit.rxJavaAdapter
+    implementation Libs.Retrofit.scalarsConverter
+
+    implementation Libs.Rx2.rxJava
+    compileOnly Libs.Square.assistedInjectAnnotations
+    kapt Libs.Square.assistedInjectProcessor
+
+    implementation Libs.Glide.base
+    kapt Libs.Glide.compiler
 }

@@ -7,7 +7,9 @@ object Libs {
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.0.2"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val ktxCore = "androidx.core:core-ktx:1.0.0"
+        const val ktxCore = "androidx.core:core-ktx:1.0.2"
+        const val ktxActivity = "androidx.activity:activity-ktx:1.0.0-alpha06"
+        const val ktxFragment = "androidx.fragment:fragment-ktx:1.1.0-alpha06"
 
         object Lifecycle {
             private const val version = "2.0.0-rc01"
@@ -34,7 +36,7 @@ object Libs {
         const val material = "com.google.android.material:material:1.0.0"
 
         object Dagger {
-            private const val version = "2.21"
+            private const val version = "2.22.1"
             const val androidSupport = "com.google.dagger:dagger-android-support:$version"
             const val base = "com.google.dagger:dagger:$version"
             const val compiler = "com.google.dagger:dagger-compiler:$version"
@@ -58,6 +60,7 @@ object Libs {
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.13.1"
         const val rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$version"
+        const val scalarsConverter = "com.squareup.retrofit2:converter-scalars:$version"
     }
 
     object Rx2 {
@@ -67,5 +70,16 @@ object Libs {
         const val location = "pl.charmas.android:android-reactive-location2:2.1@aar"
         const val relay = "com.jakewharton.rxrelay2:rxrelay:2.0.0"
         const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.6"
+    }
+
+    object Square {
+        const val assistedInjectAnnotations = "com.squareup.inject:assisted-inject-annotations-dagger2:0.4.0"
+        const val assistedInjectProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.4.0"
+    }
+
+    object Glide {
+        private const val version = "4.9.0"
+        const val base =  "com.github.bumptech.glide:glide:$version"
+        const val compiler = "com.github.bumptech.glide:compiler:$version"
     }
 }

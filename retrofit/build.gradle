@@ -11,15 +11,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation project(":core")
-
-    implementation Libs.Google.gson
-    implementation Libs.AndroidX.Room.runtime
-    implementation Libs.AndroidX.Room.compiler
-
+    implementation project(":domain")
+    implementation Libs.Retrofit.base
     implementation Libs.Rx2.rxJava
-
-
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+

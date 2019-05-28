@@ -1,27 +1,45 @@
 package com.kvelasco.openmovie
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kvelasco.openmovie.trending.TrendingMoviesFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textMessage: TextView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
+        val tag = "page:${item.itemId}"
+        val manager = supportFragmentManager
+        val fragment: Fragment = manager.findFragmentByTag(tag) ?: when (item.itemId) {
             R.id.navigation_home -> {
-                textMessage.setText(R.string.title_home)
-                return@OnNavigationItemSelectedListener true
+                TrendingMoviesFragment.newInstance()
             }
             R.id.navigation_dashboard -> {
-                textMessage.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
+                TrendingMoviesFragment.newInstance()
             }
             R.id.navigation_notifications -> {
-                textMessage.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
+                TrendingMoviesFragment.newInstance()
             }
+            else -> {
+                throw IllegalArgumentException("Unknown itemId: ${item.itemId}")
+            }
+        }
+
+        manager.executePendingTransactions()
+        val current: Fragment? = manager.findFragmentById(R.id.content)
+        if (current != fragment) {
+            val tx = manager.beginTransaction()
+            if (current != null) {
+                tx.detach(current)
+            }
+            if (fragment.isDetached){
+                tx.attach(fragment)
+            } else {
+                tx.replace(R.id.content, fragment!!, tag)
+            }
+            tx.commitAllowingStateLoss()
+            return@OnNavigationItemSelectedListener true
         }
         false
     }
@@ -30,8 +48,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        navView.selectedItemId = R.id.navigation_home
     }
 }
