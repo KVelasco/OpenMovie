@@ -35,13 +35,11 @@ class TrendingRecyclerAdapter:  RecyclerView.Adapter<TrendingRecyclerAdapter.Vie
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val image: ImageView = itemView.findViewById(R.id.item_image)
-        private val title: TextView = itemView.findViewById(R.id.item_title)
 
         fun bind(trendingUiModel: TrendingUiModel) {
             Glide.with(image)
                 .load(trendingUiModel.posterPath)
                 .into(image)
-            title.text = trendingUiModel.title
         }
     }
 
