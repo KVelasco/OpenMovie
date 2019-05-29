@@ -1,5 +1,6 @@
 package com.kvelasco.openmovie.net
 
+import com.kvelasco.openmovie.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -9,7 +10,7 @@ class AuthInterceptor : Interceptor {
         val originalHttpUrl = original.url()
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter("api_key", API_KEY)
+            .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
             .build()
 
         // Request customization: add request headers
@@ -20,5 +21,3 @@ class AuthInterceptor : Interceptor {
         return chain.proceed(request)
     }
 }
-
-const val API_KEY = ""
