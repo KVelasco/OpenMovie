@@ -31,4 +31,4 @@ When you obtain the keys, you can provide them to the app by putting the followi
 TMDB_API_KEY=<insert>
 ```
 
-On Linux/Mac that file is typically found at `~/.gradle/gradle.properties` or in the project directory `tivi/gradle.properties`
+On Linux/Mac that file is typically found at `~/.gradle/gradle.properties` or in the project directory `OpenMovie/gradle.properties`
